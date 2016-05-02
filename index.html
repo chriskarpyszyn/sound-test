@@ -35,12 +35,14 @@
     }
 
     function mouseupHandler() {
+        sound.currentTime = 0;
         sound.play();
+
     }
 
     function loadSounds() {
         setFormat();
-        sound = new Audio(`media/jump${audioFormat}`);
+        sound = new Audio(`media/powerup2${audioFormat}`);
     }
 
 
