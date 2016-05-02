@@ -13,7 +13,8 @@
     var canvasContext;
 
     var audioFormat;
-    var sound;
+    var sound, altSound;
+    var altSoundTurn = false;
 
     window.onload = function() {
         loadSounds();
@@ -35,14 +36,22 @@
     }
 
     function mouseupHandler() {
-        sound.currentTime = 0;
-        sound.play();
+        if (altSoundTurn) {
+            altSound.currentTime = 0;
+            altSound.play();
+        } else {
+            sound.currentTime = 0;
+            sound.play();
+        }
+        altSoundTurn = !altSoundTurn; //toggle true and false
+
 
     }
 
     function loadSounds() {
         setFormat();
         sound = new Audio(`media/powerup2${audioFormat}`);
+        altSound = new Audio(`media/powerup2${audioFormat}`);
     }
 
 
