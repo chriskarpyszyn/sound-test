@@ -6,8 +6,24 @@
     <title>Sound Test</title>
 </head>
 <body>
+<canvas id="gameCanvas" width="800" height="600"></canvas>
 <script>
+
+    var canvas;
+    var canvasContext;
+
     var audioFormat;
+    var sound;
+
+    window.onload = function() {
+        loadSounds();
+
+        canvas = document.getElementById("gameCanvas");
+        canvasContext = canvas.getContext("2d");
+        canvas.addEventListener("mouseup", mouseupHandler);
+        canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
 
     function setFormat() {
         var audio = new Audio();
@@ -18,10 +34,16 @@
         }
     }
 
-    setFormat();
+    function mouseupHandler() {
+        sound.play();
+    }
 
-    var sound = new Audio(`media/jump${audioFormat}`);
-    sound.play();
+    function loadSounds() {
+        setFormat();
+        sound = new Audio(`media/jump${audioFormat}`);
+    }
+
+
 </script>
 </body>
 </html>
