@@ -7,14 +7,19 @@
 </head>
 <body>
 <canvas id="gameCanvas" width="800" height="600"></canvas>
-<script src="SoundOverlap.js"></script>
+<script src="SoundAndMusic.js"></script>
 <script>
 
     var canvas;
     var canvasContext;
 
+    var backgroundMusic = new BackgroundMusic();
+    var backgroundSongPath = "media/DawnReflection";
+
     var soundPowerUp;
     var soundJump;
+
+    
 
     window.onload = function() {
         soundPowerUp = new SoundOverlap("media/powerup2");
@@ -30,13 +35,14 @@
     }
 
 
-    function keypressHandler() {
-        soundJump.play();
+    function keypressHandler(evt) {
+        evt.preventDefault();
+        backgroundMusic.loopSong(backgroundSongPath);
     }
 
     function mouseupHandler() {
-        soundPowerUp.play();
-
+        //soundPowerUp.play();
+        backgroundMusic.startOrStopMusic();
     }
 
 
