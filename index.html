@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,17 +7,18 @@
 </head>
 <body>
 <canvas id="gameCanvas" width="800" height="600"></canvas>
+<script src="SoundOverlap.js"></script>
 <script>
 
     var canvas;
     var canvasContext;
 
-    var audioFormat;
-    var sound, altSound;
-    var altSoundTurn = false;
+    var sound;
 
     window.onload = function() {
-        loadSounds();
+        sound = new SoundOverlap();
+        sound.load("media/powerup2");
+
 
         canvas = document.getElementById("gameCanvas");
         canvasContext = canvas.getContext("2d");
@@ -26,33 +27,14 @@
     }
 
 
-    function setFormat() {
-        var audio = new Audio();
-        if (audio.canPlayType("audio/mp3")) {
-            audioFormat = ".mp3";
-        } else {
-            audioFormat = ".ogg";
-        }
-    }
+    
 
     function mouseupHandler() {
-        if (altSoundTurn) {
-            altSound.currentTime = 0;
-            altSound.play();
-        } else {
-            sound.currentTime = 0;
-            sound.play();
-        }
-        altSoundTurn = !altSoundTurn; //toggle true and false
-
+        sound.play();
 
     }
 
-    function loadSounds() {
-        setFormat();
-        sound = new Audio(`media/powerup2${audioFormat}`);
-        altSound = new Audio(`media/powerup2${audioFormat}`);
-    }
+
 
 
 </script>
