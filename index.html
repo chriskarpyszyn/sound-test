@@ -13,24 +13,29 @@
     var canvas;
     var canvasContext;
 
-    var sound;
+    var soundPowerUp;
+    var soundJump;
 
     window.onload = function() {
-        sound = new SoundOverlap();
-        sound.load("media/powerup2");
+        soundPowerUp = new SoundOverlap("media/powerup2");
+        soundJump = new SoundOverlap("media/jump");
+        
 
 
         canvas = document.getElementById("gameCanvas");
         canvasContext = canvas.getContext("2d");
         canvas.addEventListener("mouseup", mouseupHandler);
+        document.addEventListener("keypress", keypressHandler);
         canvasContext.fillRect(0, 0, canvas.width, canvas.height);
     }
 
 
-    
+    function keypressHandler() {
+        soundJump.play();
+    }
 
     function mouseupHandler() {
-        sound.play();
+        soundPowerUp.play();
 
     }
 

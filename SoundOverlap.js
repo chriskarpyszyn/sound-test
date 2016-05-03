@@ -9,25 +9,25 @@ function setFormat() {
     }
 }
 
-function SoundOverlap() {
+function SoundOverlap(fileNameWithPath) {
     
-    this.load = function(fileNameWithPath) {
-        setFormat();
+    setFormat();
 
-        this.altSoundTurn = false;
-        this.mainSound = new Audio(`${fileNameWithPath}${audioFormat}`);
-        this.altSound = new Audio(`${fileNameWithPath}${audioFormat}`);
-    }
+    var altSoundTurn = false;
+
+    var mainSound = new Audio(`${fileNameWithPath}${audioFormat}`);
+    var altSound = new Audio(`${fileNameWithPath}${audioFormat}`);
+    
 
     this.play = function() {
-        if (this.altSoundTurn) {
-            this.altSound.currentTime = 0;
-            this.altSound.play();
+        if (altSoundTurn) {
+            altSound.currentTime = 0;
+            altSound.play();
         } else {
-            this.mainSound.currentTime = 0;
-            this.mainSound.play();
+            mainSound.currentTime = 0;
+            mainSound.play();
         }
-        this.altSoundTurn = !this.altSoundTurn; //toggle true and false
+        altSoundTurn = !this.altSoundTurn; //toggle true and false
     }
 
 
