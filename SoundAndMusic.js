@@ -17,7 +17,6 @@ function SoundOverlap(fileNameWithPath) {
 
     var mainSound = new Audio(fileNameWithPath + audioFormat);
     var altSound = new Audio(fileNameWithPath + audioFormat);
-    
 
     this.play = function() {
         if (altSoundTurn) {
@@ -27,7 +26,7 @@ function SoundOverlap(fileNameWithPath) {
             mainSound.currentTime = 0;
             mainSound.play();
         }
-        altSoundTurn = !this.altSoundTurn; //toggle true and false
+        altSoundTurn = !this.altSoundTurn; 
     }
 }
 

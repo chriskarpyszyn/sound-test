@@ -19,19 +19,17 @@
     var soundPowerUp;
     var soundJump;
 
-    
-
     window.onload = function() {
         soundPowerUp = new SoundOverlap("media/powerup2");
         soundJump = new SoundOverlap("media/jump");
-        
-
 
         canvas = document.getElementById("gameCanvas");
         canvasContext = canvas.getContext("2d");
         canvas.addEventListener("mouseup", mouseupHandler);
         document.addEventListener("keypress", keypressHandler);
         canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
+        backgroundMusic.loopSong(backgroundSongPath);
     }
 
 
@@ -41,12 +39,8 @@
     }
 
     function mouseupHandler() {
-        //soundPowerUp.play();
         backgroundMusic.startOrStopMusic();
     }
-
-
-
 
 </script>
 </body>
